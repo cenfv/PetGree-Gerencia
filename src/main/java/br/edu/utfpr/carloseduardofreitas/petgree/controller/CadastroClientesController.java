@@ -28,7 +28,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
-
+import br.com.caelum.stella.validation.CPFValidator;
 /**
  * FXML Controller class
  *
@@ -107,6 +107,14 @@ public class CadastroClientesController implements Initializable {
                 Notifications.create().title("Cliente").text("O campo CPF é obrigatório").showError();
             }
         }else {
+
+            boolean cpfValido = validarCPF(textFieldCpf.getText());
+            if(!cpfValido){
+                textFieldCpf.requestFocus();
+                Notifications.create().title("Cliente").text("O CPF inserido deve ser válido!").showError();
+                return;
+            }
+
             if (ALTERAR == 1) {
 
                 ClientesController.clienteSelecionado.setNome(textFieldNome.getText());
@@ -144,6 +152,15 @@ public class CadastroClientesController implements Initializable {
     private void cancelar(ActionEvent event) {
         Stage thisStage = (Stage) btnCancelar.getScene().getWindow();
         thisStage.close();
+    }
+    public static boolean validarCPF(String cpf) {
+        CPFValidator cpfValidator = new CPFValidator();
+        try{ cpfValidator.assertValid(cpf);
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }
