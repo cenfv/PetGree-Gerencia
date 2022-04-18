@@ -13,4 +13,9 @@
       <module name="PetGree" target="1.8" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="PetGree" options="-bootclasspath C:\Users\carloseduardonogueir\.jdks\corretto-1.8.0_322\jre\lib\resources.jar;C:\Users\carloseduardonogueir\.jdks\corretto-1.8.0_322\jre\lib\rt.jar;C:\Users\carloseduardonogueir\.jdks\corretto-1.8.0_322\jre\lib\sunrsasign.jar;C:\Users\carloseduardonogueir\.jdks\corretto-1.8.0_322\jre\lib\jsse.jar;C:\Users\carloseduardonogueir\.jdks\corretto-1.8.0_322\jre\lib\jce.jar;C:\Users\carloseduardonogueir\.jdks\corretto-1.8.0_322\jre\lib\charsets.jar;C:\Users\carloseduardonogueir\.jdks\corretto-1.8.0_322\jre\lib\jfr.jar;C:\Users\carloseduardonogueir\.jdks\corretto-1.8.0_322\jre\classes;$USER_HOME$/.jdks/corretto-1.8.0_322/jre/lib/jfxrt.jar" />
+    </option>
+  </component>
 </project>
