@@ -25,6 +25,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+
 /**
  * FXML Controller class
  *
@@ -58,6 +61,10 @@ public class ContatoClienteController implements Initializable {
             Notifications.create().title("Contato").text("Por favor preencha ao menos um contato").showError();
 
         }else {
+            if (!validarEmail(TextFieldEmail.getText())){
+                Notifications.create().title("Contato").text("O email precisa ser válido!").showError();
+                return;
+            }
             if (CadastroClientesController.ALTERAR == 1) {
 
                 ClientesController.clienteSelecionado.getContato().setEmail(TextFieldEmail.getText());
@@ -98,5 +105,14 @@ public class ContatoClienteController implements Initializable {
         Stage thisStage = (Stage) btnCancelar.getScene().getWindow();
         thisStage.close();
     }
-
+    public static boolean validarEmail(String email) {
+        boolean result = true;
+        try {
+            InternetAddress emailAddr = new InternetAddress(email);
+            emailAddr.validate();
+        } catch (AddressException ex) {
+            result = false;
+        }
+        return result;
+    }
 }
